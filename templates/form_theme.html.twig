@@ -1,0 +1,19 @@
+{# email|text|tel|... #}
+{% block submit_widget %}
+    My Button
+{% endblock %}
+{% block text_widget %}
+    {# Allow to display all variables available inside the block #}
+    @@<input type="text" name="{{ full_name }}" />@@
+{% endblock %}
+
+{# override a specific field based on its id _{{ id }} #}
+{#
+{% block _user_lastName_widget %}
+TITI
+{% endblock %}
+{% block _user_email_widget %}
+TATA
+    {{ dump() }}
+{% endblock %}
+#}

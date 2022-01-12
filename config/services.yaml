@@ -23,3 +23,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Repository\RestaurantRepositoryInterface: '@App\Repository\InMemoryRestaurantRepository'
+
+    App\Repository\RestaurantRepository:
+        class: App\Repository\RestaurantRepository
+        arguments:
+            $registry: '@Doctrine\Persistence\ManagerRegistry'
+
+
+    App\Repository\InMemoryRestaurantRepository:

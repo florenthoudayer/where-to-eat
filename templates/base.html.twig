@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Restaurant details</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    {{ encore_entry_link_tags('app') }}
+
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+</head>
+
+<div class="container">
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li ><a href="/">Home</a></li>
+                <li ><a href="/login">Login</a></li>
+                <li ><a href="/register">Register</a></li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">WhereToEat</h3>
+    </div>
+
+    <div id="body">
+
+        {% block body %}
+        {% endblock %}
+
+    </div>
+
+</div>
+
+
+
+<footer class="footer">
+    <p>&copy; 2021 WhereToEat, Inc.</p>
+</footer>
+</div>
+
+{{ encore_entry_script_tags('app') }}
+
+<script src="/js/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap-stimulus.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% import 'macros.html.twig' as macros %}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+                <div class="jumbotron">
+  <p class="lead">You don't know where to go for lunch, check the restaurants your co-workers like?<br /> You want to share a restaurant with your co-workers?</p>
+  <p>
+    <a class="btn btn-primary" href="/restaurant-finder/random" role="button">Find a random restaurant</a>
+    <a class="btn btn-primary" href="/restaurant-finder/notTried" role="button">Find a restaurant not tried yet</a>
+  </p>
+        <p>
+        <a class="btn btn-lg btn-success" href="/restaurant/new" role="button">Add a restaurant</a></p>
+        </p>
+</div>
+
+<div class="row marketing latest-restaurants">
+  <h3>Latest restaurants</h3>
+        {% for restaurant in restaurants %}
+            {{ macros.show_restaurant(restaurant, '250x150') }}
+        {% endfor %}
+</div>
+
+{% endblock %}

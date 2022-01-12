@@ -1,0 +1,13 @@
+/** App **/
+
+.restaurant {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 15px;
+}
+
+.restaurant .resto-details {
+    padding-left: 20px;
+    padding-right: 10px;
+    width: 270px;
+}

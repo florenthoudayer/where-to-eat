@@ -1,0 +1,31 @@
+{% macro show_restaurant(restaurant, size='350x250') %}
+    <div class="restaurant">
+        <div class="pull-left">
+            <img class="img-thumbnail" src="https://maps.googleapis.com/maps/api/staticmap?center={{ restaurant.address.street }} {{ restaurant.address.zip }}&zoom=14&size={{ size }}&markers={{ restaurant.address.street }} {{ restaurant.address.zip }}&key=AIzaSyCQSkhpJVncuLv5WN-iE8gPt7zFqbGtrR0" />
+        </div>
+        <div class="pull-left resto-details">
+            <h4><a href="{{ path('restaurant_show', {id: restaurant.id}) }}">{{ restaurant.name }}</a></h4>
+            <p>{{ restaurant.address.street }} {{ restaurant.address.zip }} {{ restaurant.address.city }}</p>
+            <p>
+                <a href="#" type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-thumbs-up"></span> {{ restaurant.likes }}
+                </a>
+                <a href="#" type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-thumbs-down"></span> {{ restaurant.dislikes }}
+                </a>
+            </p>
+            {#
+            <p>Proposé par {{ restaurant.coworker.firstName }}.</p>
+
+            <p>
+              {% if is_granted('RESTAURANT_EDIT', restaurant) %}
+              <a href="#">Edit</a> |
+              {% endif %}
+              {% if is_granted('RESTAURANT_DELETE', restaurant) %}
+             <a href="#">Delete</a></p>
+             {% endif %}
+            #}
+        </div>
+        <div class="clearfix"></div>
+    </div>
+{% endmacro %}

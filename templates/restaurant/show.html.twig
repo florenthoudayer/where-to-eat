@@ -1,0 +1,15 @@
+{% import 'macros.html.twig' as macros %}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+                      <div class="row marketing latest-restaurants">
+          <h3>Resto <a href="{{ path ('restaurant_show', {id:restaurant.id}) }}">{{ restaurant.name }}</a></h3>
+                          {{ macros.show_restaurant(restaurant) }}
+                </div>
+
+      <h4>Itinerary from work to {{ restaurant.address }}</h4>
+      <iframe scrolling="no" frameborder="0" marginheight="0px" marginwidth="0px" height="450px" width="100%" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCQSkhpJVncuLv5WN-iE8gPt7zFqbGtrR0&origin=40 rue de Ruaudin, 72100 LeMans&destination={{ restaurant.address }}&avoid=tolls|highways&mode=walking"></iframe>
+
+{% endblock %}
