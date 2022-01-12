@@ -7,6 +7,10 @@ use App\Entity\Address;
 
 class InMemoryRestaurantRepository implements RestaurantRepositoryInterface
 {
+    public function __construct(String $city)
+    {
+    }
+
     public function findOneById($id): ?Restaurant
     {
         $restaurants = array_filter($this->findAll(), function(Restaurant $restaurant) use ($id) {

@@ -1,7 +1,7 @@
 {% macro show_restaurant(restaurant, size='350x250') %}
     <div class="restaurant">
         <div class="pull-left">
-            <img class="img-thumbnail" src="https://maps.googleapis.com/maps/api/staticmap?center={{ restaurant.address.street }} {{ restaurant.address.zip }}&zoom=14&size={{ size }}&markers={{ restaurant.address.street }} {{ restaurant.address.zip }}&key=AIzaSyCQSkhpJVncuLv5WN-iE8gPt7zFqbGtrR0" />
+            <img class="img-thumbnail" src="https://maps.googleapis.com/maps/api/staticmap?center={{ restaurant.address.street }} {{ restaurant.address.zip }}&zoom=14&size={{ size }}&markers={{ restaurant.address.street }} {{ restaurant.address.zip }}&key={{ gmaps_key }}" />
         </div>
         <div class="pull-left resto-details">
             <h4><a href="{{ path('restaurant_show', {id: restaurant.id}) }}">{{ restaurant.name }}</a></h4>

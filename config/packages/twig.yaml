@@ -5,6 +5,9 @@ twig:
         - bootstrap_3_horizontal_layout.html.twig
         #- form_theme.html.twig
 
+    globals:
+        gmaps_key: '%env(GMAPS_KEY)%'
+
 when@test:
     twig:
         strict_variables: true

@@ -3,10 +3,11 @@
 namespace App\Controller;
 
 use App\Form\UserType;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Manager\UserManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
@@ -14,7 +15,7 @@ class UserController extends AbstractController
     /**
      * @Route("/register", name="register")
      */
-    public function register(Request $request, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserManager $userManager): Response
     {
         $form = $this->createForm(UserType::class, null, [
             'validation_groups' => ['CREATE', 'Default'],
@@ -25,8 +26,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid() && $form->get('cgu')->getData())
         {
             $user = $form->getData();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $userManager->register($user);
             dump($user);
         }
 
