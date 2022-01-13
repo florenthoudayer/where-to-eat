@@ -13,6 +13,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
+     * @Route ("/admin/users", requirements={})
+     */
+    public function adminListUser()
+    {
+        return new Response('Admin user listing');
+    }
+
+    /**
+     * @Route ("/api/users", requirements={})
+     */
+    public function apiListUser()
+    {
+        return new Response('Api user listing');
+    }
+
+    /**
      * @Route("/register", name="register")
      */
     public function register(Request $request, UserManager $userManager): Response

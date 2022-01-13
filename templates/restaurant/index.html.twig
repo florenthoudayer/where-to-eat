@@ -11,7 +11,7 @@
     <a class="btn btn-primary" href="/restaurant-finder/notTried" role="button">Find a restaurant not tried yet</a>
   </p>
         <p>
-        <a class="btn btn-lg btn-success" href="/restaurant/new" role="button">Add a restaurant</a></p>
+        <a class="btn btn-lg btn-success" {% if is_granted ('ROLE_ADMIN') %} href="/restaurant/new" {% else %} href="#" disabled="disabled" {% endif%} role="button">Add a restaurant</a></p>
         </p>
 </div>
 

@@ -1,3 +1,13 @@
+{% macro render_signup_menu()  %}
+    {% if app.user %}
+        <li><a href="/profile">{{ app.user.email }}</a></li>
+        <li><a href="/logout">Logout</a></li>
+    {% else %}
+        <li {% if app.request.attributes.get('_route') == 'app_login' %} class="active"{% endif %}><a href="{{ path('app_login') }}">Login</a></li>
+        <li {% if app.request.attributes.get('_route') == 'register' %} class="active"{% endif %}><a href="{{ path('register') }}">Register</a></li>
+    {% endif %}
+{% endmacro %}
+
 {% macro show_restaurant(restaurant, size='350x250') %}
     <div class="restaurant">
         <div class="pull-left">
@@ -14,17 +24,17 @@
                     <span class="glyphicon glyphicon-thumbs-down"></span> {{ restaurant.dislikes }}
                 </a>
             </p>
-            {#
-            <p>Proposé par {{ restaurant.coworker.firstName }}.</p>
+            {% if restaurant.user %}
+                <p>Proposé par {{ restaurant.user.firstName }}.</p>
+                <p>
+            {% endif %}
 
-            <p>
-              {% if is_granted('RESTAURANT_EDIT', restaurant) %}
+            {% if is_granted('RESTAURANT_EDIT', restaurant) %}
               <a href="#">Edit</a> |
               {% endif %}
-              {% if is_granted('RESTAURANT_DELETE', restaurant) %}
+            {% if is_granted('RESTAURANT_DELETE', restaurant) %}
              <a href="#">Delete</a></p>
-             {% endif %}
-            #}
+            {% endif %}
         </div>
         <div class="clearfix"></div>
     </div>

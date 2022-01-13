@@ -38,6 +38,11 @@ class Restaurant
      */
     private $address;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="restaurants")
+     */
+    private $user;
+
     public function __construct(int $id = null)
     {
         $this->id = $id;
@@ -92,6 +97,18 @@ class Restaurant
     public function setAddress(Address $address): self
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
